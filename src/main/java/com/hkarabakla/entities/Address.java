@@ -1,6 +1,7 @@
 package com.hkarabakla.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -17,7 +18,7 @@ public class Address {
     private String city;
     private int zipcode;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(mappedBy = "address", fetch = FetchType.EAGER)
     private User user;
 
     public int getId() {

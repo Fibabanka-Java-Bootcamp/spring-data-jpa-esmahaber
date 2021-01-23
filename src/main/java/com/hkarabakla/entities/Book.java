@@ -24,14 +24,14 @@ public class Book {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "order_book",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "book_isbn"))
     private Set<Order> registeredOrderBook;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "author_book",
             joinColumns = @JoinColumn(name = "author_id"),
